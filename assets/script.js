@@ -61,12 +61,12 @@ $(document).ready(() => {
                     </div>
                     <div class="mb-3">
                       <label for="" class="form-label"
-                        >Months of experience ${expIndex}</label
+                        >Months of experience${expIndex}</label
                       >
                       <input
                         type="number"
                         class="form-control shadow-none"
-                        name="experience[1${expIndex}][months]"
+                        name="experience[${expIndex}][months]"
                         id="months${expIndex}"
                         aria-describedby="helpId"
                         placeholder="5"
