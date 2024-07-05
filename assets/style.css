@@ -17,7 +17,6 @@ body {
 }
 
 .btn {
-  text-transform: uppercase;
   font-weight: 500;
   background-color: var(--purple);
   transition: all ease-in-out 0.2s;
