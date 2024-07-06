@@ -50,9 +50,9 @@
         if (mysqli_num_rows($result) > 0) {
 
             echo "<div class='table-responsive bg-dark'>
-                    <table class='table table-striped table-hover table-borderless table-dark align-middle border'>
-                        <thead class='table-dark'>
-                            <tr class='table-dark'>
+                    <table class='table table-striped table-hover table-borderless table-dark align-middle'>
+                        <thead>
+                            <tr>
                                 <th>NAME</th>
                                 <th>EMAIL</th>
                                 <th>PHONE NUMBER</th>
@@ -78,16 +78,17 @@
                     $total_company = 0;
                 }
                 echo "
-                <tr class='table-dark'>
-                <td scope='row'>{$row['name']}</td>
+                <tr>
+                <td>{$row['name']}</td>
                 <td>{$row['email']}</td>
                 <td>{$row['mobile']}</td>
-                <td class='ps-5'>$total_company</td>
+                <td>$total_company</td>
                 <td>$totalYear years , $totalMonth months</td>
                 <td>
                     <div>
                         <a class='btn btn-warning' href='edit_user.php?id={$row['id']}'>EDIT</a>
-                        <a class='btn btn-danger' href='delete.php?id={$row['id']}'>DELETE</a>
+
+                        <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' data-userid='{$row['id']}' data-username='{$row['name']}'>DELETE</button>
                     </div>
                 </td>
             </tr>
@@ -101,7 +102,7 @@
         </div>
 
         <!-- Pagination links -->
-        <nav>
+        <nav class="mt-5">
             <ul class="pagination justify-content-center">
                 <?php
                 if ($current_page > 1) {
@@ -123,6 +124,25 @@
             </ul>
         </nav>
 
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header border border-0">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body border border-0">
+                        Are you sure you want to delete all data for <span class="text-danger" id="userName"></span>?
+                    </div>
+                    <div class="modal-footer border border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="" id="confirmDelete" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -132,6 +152,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+5hb5U5GO0l4x5SO5F5CIM5kF5a5osFS5Dfj8B5"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#deleteModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var userId = button.data('userid'); // Extract user ID from data-* attributes
+                var userName = button.data('username'); // Extract user name from data-* attributes
+                var confirmDelete = $('#confirmDelete'); // The delete confirmation button
+                var userNameSpan = $('#userName'); // The span where user name will be displayed
+
+                userNameSpan.text(userName); // Set the user name in the modal
+                confirmDelete.attr('href', 'delete.php?id=' + userId); // Set the delete link with user ID
+            });
+        });
+    </script>
 </body>
 
 </html>
