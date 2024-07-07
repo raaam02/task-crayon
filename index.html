@@ -17,15 +17,14 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="assets/style.css" />
   </head>
 
-  <body>
+  <body style="background-color: #0e0a2f">
     <main>
-      <div class="container d-flex align-item-center justify-content-center">
+      <div class="container">
         <div
-          class="w-100 form-box border p-2 p-md-5 my-5 rounded d-flex flex-column align-item-center justify-content-center"
-          style="max-width: 700px"
+          class="border p-2 p-md-5 my-5 rounded mx-auto"
+          style="max-width: 700px; background-color: #f1f1f1"
         >
           <h2 class="text-center m-3">Add New User</h2>
           <div>
@@ -43,6 +42,12 @@
                     placeholder="name"
                     required
                   />
+                  <span
+                    id="nameError"
+                    class="form-text text-danger"
+                    style="display: none"
+                    >Name can only contain letters and spaces</span
+                  >
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Email*</label>
@@ -67,7 +72,7 @@
                     placeholder="9876543210"
                     required
                   />
-                  <small id="numberError" class="form-text text-danger"></small>
+                  <span id="numberError" class="form-text text-danger"></span>
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Gender*</label>
@@ -90,12 +95,17 @@
                       <label for="" class="form-label">Comapny Name</label>
                       <input
                         type="text"
-                        class="form-control shadow-none"
+                        class="form-control shadow-none company"
                         name="experience[1][company]"
                         id="company1"
                         aria-describedby="helpId"
                         placeholder="Crayon infotech"
                       />
+                      <span
+                        class="form-text text-danger companyError"
+                        style="display: none"
+                        >Company name can only contain letters and spaces</span
+                      >
                     </div>
                     <div class="mb-3">
                       <label for="" class="form-label"
@@ -117,12 +127,13 @@
                       >
                       <input
                         type="number"
-                        class="form-control shadow-none"
+                        class="form-control shadow-none months"
                         name="experience[1][months]"
                         id="months1"
                         aria-describedby="helpId"
                         placeholder="5"
                         required
+                        max="12"
                       />
                     </div>
                   </div>
@@ -138,7 +149,7 @@
                 </div>
               </div>
               <div class="my-3 mt-5">
-                <button type="submit" class="btn submit-btn w-100">
+                <button type="submit" class="btn btn-primary submit-btn w-100">
                   SUBMIT
                 </button>
               </div>

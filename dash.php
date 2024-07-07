@@ -49,7 +49,7 @@
         $result = mysqli_query($conn, $query_select);
         if (mysqli_num_rows($result) > 0) {
 
-            echo "<div class='table-responsive bg-dark'>
+            echo "<div class='table-responsive'>
                     <table class='table table-striped table-hover table-borderless table-dark align-middle'>
                         <thead>
                             <tr>
@@ -86,7 +86,7 @@
                 <td>$totalYear years , $totalMonth months</td>
                 <td>
                     <div>
-                        <a class='btn btn-warning' href='edit_user.php?id={$row['id']}'>EDIT</a>
+                        <a class='btn btn-warning m-1 m-md-0 m-lg-0' href='edit_user.php?id={$row['id']}'>EDIT</a>
 
                         <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal' data-userid='{$row['id']}' data-username='{$row['name']}'>DELETE</button>
                     </div>
