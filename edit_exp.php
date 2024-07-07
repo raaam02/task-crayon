@@ -36,27 +36,29 @@ if (isset($_POST['update_experience'])) {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 
-<body>
+<body style="background-color: #0e0a2f">
     <div class="container">
-        <h2>Edit Experience</h2>
-        <form method="POST" action="">
-            <div class="mb-3">
-                <label for="company_name" class="form-label">Company Name</label>
-                <input type="text" class="form-control" id="company_name" name="company"
-                    value="<?php echo $experience['company']; ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="years" class="form-label">Years</label>
-                <input type="number" class="form-control" id="years" name="years"
-                    value="<?php echo $experience['years']; ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="months" class="form-label">Months</label>
-                <input type="number" class="form-control" id="months" name="months"
-                    value="<?php echo $experience['months']; ?>" required>
-            </div>
-            <button type="submit" name="update_experience" class="btn btn-primary">Update</button>
-        </form>
+        <div class="form-box mx-auto border rounded p-2 p-md-5 my-5" style="max-width:500px; background-color: #f1f1f1">
+            <h2>Edit Experience</h2>
+            <form method="POST" action="">
+                <div class="mb-3">
+                    <label for="company_name" class="form-label">Company Name</label>
+                    <input type="text" class="form-control shadow-none" id="company_name" name="company"
+                        value="<?php echo $experience['company']; ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="years" class="form-label">Years</label>
+                    <input type="number" class="form-control shadow-none" id="years" name="years"
+                        value="<?php echo $experience['years']; ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="months" class="form-label">Months</label>
+                    <input type="number" class="form-control shadow-none" id="months" name="months"
+                        value="<?php echo $experience['months']; ?>" required>
+                </div>
+                <button type="submit" name="update_experience" class="btn btn-primary w-100">Update</button>
+            </form>
+        </div>
     </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

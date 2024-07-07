@@ -36,55 +36,60 @@ if (isset($_POST['update_user'])) {
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="assets/style.css"> -->
 </head>
 
-<body>
-    <div class="container">
-        <h2>Edit User</h2>
-        <form method="POST" action="">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="<?php echo $user['name']; ?>"
-                    required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>"
-                    required>
-            </div>
-            <div class="mb-3">
-                <label for="mobile" class="form-label">Mobile</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" value="<?php echo $user['mobile']; ?>"
-                    required>
-            </div>
-            <button type="submit" name="update_user" class="btn btn-primary">Update</button>
-        </form>
-
-        <h2 class="mt-5">Experiences</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Company Name</th>
-                    <th>Years</th>
-                    <th>Months</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($experience = mysqli_fetch_assoc($exp_result)) { ?>
+<body style="background-color: #0e0a2f">
+    <div class="container my-5">
+        <div class="form-box mx-auto border rounded p-2 p-md-5 my-5" style="max-width:500px; background-color: #f1f1f1">
+            <h2>Edit User</h2>
+            <form method="POST" action="">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control shadow-none" id="name" name="name"
+                        value="<?php echo $user['name']; ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control shadow-none" id="email" name="email"
+                        value="<?php echo $user['email']; ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input type="text" class="form-control shadow-none" id="mobile" name="mobile"
+                        value="<?php echo $user['mobile']; ?>" required>
+                </div>
+                <button type="submit" name="update_user" class="btn btn-primary w-100">Update</button>
+            </form>
+        </div>
+        <h2 class="mt-5 text-white">Experiences</h2>
+        <div class="table-responsive rounded">
+            <table class="table rounded table-striped table-hover table-borderless table-light align-middle">
+                <thead>
                     <tr>
-                        <td><?php echo $experience['company']; ?></td>
-                        <td><?php echo $experience['years']; ?></td>
-                        <td><?php echo $experience['months']; ?></td>
-                        <td>
-                            <a class="btn btn-warning" href="edit_exp.php?id=<?php echo $experience['id']; ?>">Edit</a>
-                            <a class="btn btn-danger"
-                                href="delete_exp.php?id=<?php echo $experience['id']; ?>&user_id=<?php echo $user_id; ?>">Delete</a>
-                        </td>
+                        <th>Company Name</th>
+                        <th>Years</th>
+                        <th>Months</th>
+                        <th>Actions</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class='table-group-divider rounded'>
+                    <?php while ($experience = mysqli_fetch_assoc($exp_result)) { ?>
+                        <tr>
+                            <td><?php echo $experience['company']; ?></td>
+                            <td><?php echo $experience['years']; ?></td>
+                            <td><?php echo $experience['months']; ?></td>
+                            <td class="">
+                                <a class="btn btn-warning m-1 m-md-0 m-lg-0"
+                                    href="edit_exp.php?id=<?php echo $experience['id']; ?>">Edit</a>
+                                <a class="btn btn-danger"
+                                    href="delete_exp.php?id=<?php echo $experience['id']; ?>&user_id=<?php echo $user_id; ?>">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
 
         <a class="btn btn-success mt-3" href="add_exp.php?user_id=<?php echo $user_id; ?>">Add New Experience</a>
     </div>
